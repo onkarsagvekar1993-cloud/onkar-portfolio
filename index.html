@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Onkar Sagvekar — Motion Graphics Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --black:#060A06;
+  --surface:#0E130E;
+  --surface2:#141A14;
+  --card:#191F19;
+  --green:#B8FF00;
+  --green-dim:rgba(184,255,0,0.08);
+  --green-border:rgba(184,255,0,0.22);
+  --green-glow:rgba(184,255,0,0.15);
+  --white:#FFFFFF;
+  --body:#A8B8A8;
+  --muted:#556055;
+  --page-pad:64px;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;cursor:none;}
+
+/* CURSOR */
+#cur{position:fixed;width:8px;height:8px;background:var(--green);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .08s;}
+#cur-ring{position:fixed;width:32px;height:32px;border:1px solid var(--green);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:.4;transition:width .2s,height .2s;}
+body:hover #cur{opacity:1;}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:20px var(--page-pad);
+  background:rgba(6,10,6,.85);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(184,255,0,.06);
+}
+.nav-logo{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:15px;font-weight:700;letter-spacing:3px;
+  color:var(--green);text-decoration:none;text-transform:uppercase;
+}
+.nav-links{display:flex;gap:36px;align-items:center;}
+.nav-links a{
+  font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;transition:color .2s;
+}
+.nav-links a:hover{color:var(--green);}
+.nav-cta{
+  padding:9px 22px;
+  background:var(--green);color:var(--black);
+  font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  text-decoration:none;border-radius:2px;transition:opacity .2s;
+}
+.nav-cta:hover{opacity:.85;}
+
+/* HERO */
+#hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:140px var(--page-pad) 80px;
+  position:relative;overflow:hidden;
+}
+.hero-glow{
+  position:absolute;top:10%;left:50%;transform:translateX(-50%);
+  width:700px;height:400px;
+  background:radial-gradient(ellipse at center, rgba(184,255,0,.13) 0%, transparent 70%);
+  pointer-events:none;
+}
+.hero-noise{
+  position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none;opacity:.4;
+}
+.hero-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 16px;border:1px solid var(--green-border);border-radius:100px;
+  font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;
+  color:var(--green);margin-bottom:32px;width:fit-content;
+  opacity:0;animation:fadeUp .6s .1s ease forwards;
+}
+.hero-pill-dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+.hero-h1{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(52px,10vw,120px);
+  font-weight:700;line-height:.92;letter-spacing:-2px;
+  color:var(--white);
+  opacity:0;animation:fadeUp .6s .25s ease forwards;
+}
+.hero-h1 .green{color:var(--green);}
+.hero-sub{
+  font-size:clamp(14px,1.8vw,18px);font-weight:300;
+  color:var(--body);line-height:1.7;
+  max-width:520px;margin-top:28px;
+  opacity:0;animation:fadeUp .6s .4s ease forwards;
+}
+.hero-actions{
+  display:flex;gap:14px;margin-top:44px;flex-wrap:wrap;
+  opacity:0;animation:fadeUp .6s .55s ease forwards;
+}
+.btn-green{
+  padding:14px 32px;background:var(--green);color:var(--black);
+  font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  text-decoration:none;border-radius:2px;transition:opacity .2s,transform .2s;
+}
+.btn-green:hover{opacity:.88;transform:translateY(-2px);}
+.btn-ghost{
+  padding:14px 32px;background:transparent;color:var(--white);
+  font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;
+  text-decoration:none;border:1px solid rgba(255,255,255,.15);border-radius:2px;
+  transition:border-color .2s,color .2s,transform .2s;
+}
+.btn-ghost:hover{border-color:var(--green);color:var(--green);transform:translateY(-2px);}
+.hero-scroll-hint{
+  position:absolute;bottom:36px;left:var(--page-pad);
+  display:flex;align-items:center;gap:12px;
+  font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);
+  opacity:0;animation:fadeUp .6s .8s ease forwards;
+}
+.scroll-line{display:block;width:36px;height:1px;background:var(--green);}
+
+/* STATS */
+.stats-strip{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  background:var(--green);
+  padding:32px var(--page-pad);
+}
+.stat-item{text-align:center;padding:0 20px;}
+.stat-item+.stat-item{border-left:1px solid rgba(6,10,6,.15);}
+.stat-num{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:48px;font-weight:700;color:var(--black);line-height:1;
+}
+.stat-label{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(6,10,6,.55);margin-top:6px;}
+
+/* SECTION SHARED */
+.sec{padding:100px var(--page-pad);}
+.sec-eyebrow{
+  font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;
+  color:var(--green);margin-bottom:14px;
+}
+.sec-title{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(32px,5vw,58px);font-weight:700;
+  line-height:1.05;letter-spacing:-1px;margin-bottom:52px;
+}
+.sec-title .green{color:var(--green);}
+
+/* VIDEO REEL */
+#reel{padding:80px 0;background:var(--surface);overflow:hidden;}
+.reel-header{padding:0 var(--page-pad) 40px;display:flex;justify-content:space-between;align-items:flex-end;}
+.reel-header .sec-title{margin-bottom:0;}
+.reel-note{font-size:12px;color:var(--muted);max-width:240px;text-align:right;line-height:1.6;}
+
+/* TRACK WRAPPER */
+.reel-track-outer{
+  overflow:hidden;position:relative;
+  mask-image:linear-gradient(to right,transparent 0%,black 6%,black 94%,transparent 100%);
+  -webkit-mask-image:linear-gradient(to right,transparent 0%,black 6%,black 94%,transparent 100%);
+}
+.reel-track{
+  display:flex;gap:20px;
+  width:max-content;
+  animation:reel-scroll 40s linear infinite;
+}
+.reel-track:hover{animation-play-state:paused;}
+@keyframes reel-scroll{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
+.video-card{
+  flex-shrink:0;
+  width:340px;height:200px;
+  background:var(--card);
+  border:1px solid rgba(184,255,0,.1);
+  border-radius:4px;
+  position:relative;overflow:hidden;
+  cursor:none;
+  transition:border-color .3s,transform .3s;
+}
+.video-card:hover{border-color:var(--green);transform:scale(1.02);}
+.video-card video{
+  width:100%;height:100%;object-fit:cover;
+  display:block;
+}
+/* placeholder state when no video src */
+.video-placeholder{
+  width:100%;height:100%;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:12px;background:var(--card);
+}
+.vp-icon{
+  width:48px;height:48px;border-radius:50%;
+  border:2px solid var(--green-border);
+  display:flex;align-items:center;justify-content:center;
+}
+.vp-icon svg{width:18px;height:18px;fill:var(--green);}
+.vp-label{font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);}
+.vp-client{font-size:13px;font-weight:600;color:var(--white);}
+.video-card-tag{
+  position:absolute;top:12px;left:12px;
+  padding:4px 10px;background:var(--green);
+  font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--black);border-radius:2px;
+}
+/* second reel row */
+.reel-track.reverse{animation-direction:reverse;animation-duration:50s;}
+
+/* HOW TO ADD VIDEO — instruction card */
+.reel-instruction{
+  margin:28px var(--page-pad) 0;
+  padding:16px 24px;
+  border:1px dashed var(--green-border);
+  border-radius:4px;
+  display:flex;align-items:center;gap:16px;
+  background:var(--green-dim);
+}
+.ri-icon{font-size:20px;}
+.ri-text{font-size:12px;color:var(--muted);line-height:1.6;}
+.ri-text strong{color:var(--green);}
+
+/* ABOUT */
+#about{background:var(--black);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.about-body p{font-size:15px;line-height:1.85;color:var(--body);margin-bottom:18px;}
+.about-body p strong{color:var(--white);}
+.about-pull{
+  margin-top:32px;padding:20px 24px;
+  border-left:3px solid var(--green);
+  background:var(--green-dim);border-radius:0 4px 4px 0;
+}
+.about-pull p{font-size:13.5px;font-style:italic;color:var(--body);line-height:1.7;margin:0;}
+.about-cards{display:flex;flex-direction:column;gap:14px;}
+.about-card{
+  padding:20px 22px;
+  background:var(--card);
+  border:1px solid rgba(184,255,0,.07);
+  border-radius:4px;
+  transition:border-color .2s;
+}
+.about-card:hover{border-color:var(--green-border);}
+.ac-label{font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--green);margin-bottom:6px;}
+.ac-value{font-size:13.5px;color:var(--body);line-height:1.5;}
+
+/* EXPERIENCE */
+#experience{background:var(--surface);}
+.exp-list{display:flex;flex-direction:column;gap:0;position:relative;}
+.exp-list::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;
+  width:1px;background:linear-gradient(to bottom,var(--green),rgba(184,255,0,.05));
+}
+.exp-item{
+  display:grid;grid-template-columns:180px 1fr;gap:48px;
+  padding:36px 0 36px 44px;
+  border-bottom:1px solid rgba(184,255,0,.07);
+  position:relative;
+  opacity:0;transform:translateX(-16px);
+  transition:opacity .5s ease,transform .5s ease;
+}
+.exp-item.visible{opacity:1;transform:translateX(0);}
+.exp-item::before{
+  content:'';position:absolute;left:-5px;top:40px;
+  width:11px;height:11px;background:var(--green);border-radius:50%;
+  box-shadow:0 0 0 4px rgba(184,255,0,.15);
+}
+.exp-meta{}
+.exp-co{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:18px;font-weight:700;color:var(--green);
+}
+.exp-dates{font-size:11px;color:var(--muted);letter-spacing:1px;margin-top:5px;}
+.exp-role{font-size:16px;font-weight:600;color:var(--white);margin-bottom:14px;}
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.exp-bullets li{
+  font-size:13px;color:var(--body);line-height:1.65;
+  padding-left:18px;position:relative;
+}
+.exp-bullets li::before{
+  content:'▸';color:var(--green);position:absolute;left:0;top:0;
+  font-size:10px;line-height:2;
+}
+
+/* SKILLS */
+#skills{background:var(--black);}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.skill-card{
+  padding:28px;
+  background:var(--card);
+  border:1px solid rgba(184,255,0,.07);
+  border-top:2px solid var(--green);
+  border-radius:4px;
+  transition:background .2s,border-color .2s,transform .2s;
+  opacity:0;transform:translateY(16px);
+  transition:opacity .5s ease,transform .5s ease,background .2s,border-color .2s;
+}
+.skill-card.visible{opacity:1;transform:translateY(0);}
+.skill-card:hover{background:var(--surface2);border-color:var(--green);}
+.sk-title{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--green);margin-bottom:16px;}
+.sk-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.sk-tag{
+  padding:5px 12px;
+  background:rgba(184,255,0,.06);
+  border:1px solid rgba(184,255,0,.1);
+  font-size:12px;color:var(--body);border-radius:2px;
+}
+
+/* AI */
+#ai{background:var(--surface);}
+.ai-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;}
+.ai-col-head{
+  font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;
+  color:var(--green);margin-bottom:24px;padding-bottom:12px;
+  border-bottom:1px solid var(--green-border);
+}
+.ai-item{
+  display:flex;gap:16px;align-items:flex-start;
+  padding:16px 0;border-bottom:1px solid rgba(184,255,0,.06);
+}
+.ai-dot{width:7px;height:7px;border-radius:50%;background:var(--green);flex-shrink:0;margin-top:5px;}
+.ai-name{font-size:14px;font-weight:600;color:var(--white);margin-bottom:3px;}
+.ai-desc{font-size:12px;color:var(--muted);}
+.paid-badge{
+  display:inline-block;padding:2px 7px;
+  background:var(--green);color:var(--black);
+  font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  border-radius:1px;margin-left:8px;vertical-align:middle;
+}
+
+/* BRANDS */
+#brands{background:var(--black);padding:80px 0;}
+.brands-header{padding:0 var(--page-pad) 48px;}
+.marquee-wrap{
+  overflow:hidden;
+  mask-image:linear-gradient(to right,transparent,black 10%,black 90%,transparent);
+  -webkit-mask-image:linear-gradient(to right,transparent,black 10%,black 90%,transparent);
+}
+.marquee-track{
+  display:flex;gap:0;width:max-content;
+  animation:marquee 30s linear infinite;
+}
+.marquee-track:hover{animation-play-state:paused;}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.brand-item{
+  padding:18px 44px;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:18px;font-weight:600;letter-spacing:1px;
+  color:var(--muted);white-space:nowrap;
+  border-right:1px solid rgba(184,255,0,.07);
+  transition:color .2s;
+}
+.brand-item:hover{color:var(--green);}
+
+/* CONTACT */
+#contact{background:var(--surface);text-align:center;}
+.contact-inner{max-width:580px;margin:0 auto;}
+.contact-inner .sec-title{margin-bottom:14px;}
+.contact-sub{font-size:15px;color:var(--body);line-height:1.7;margin-bottom:48px;}
+.contact-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:40px;}
+.c-link{
+  display:flex;align-items:center;gap:10px;
+  padding:13px 26px;
+  border:1px solid rgba(184,255,0,.2);
+  color:var(--body);text-decoration:none;
+  font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;
+  border-radius:2px;transition:background .2s,border-color .2s,color .2s;
+}
+.c-link:hover{background:var(--green-dim);border-color:var(--green);color:var(--green);}
+.c-link .ico{font-size:15px;}
+.contact-small{font-size:12px;color:var(--muted);}
+
+/* FOOTER */
+footer{
+  background:#030503;
+  padding:22px var(--page-pad);
+  display:flex;justify-content:space-between;align-items:center;
+}
+.footer-logo{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:13px;font-weight:700;letter-spacing:4px;color:var(--green);
+}
+.footer-copy{font-size:11px;color:var(--muted);}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  :root{--page-pad:24px;}
+  .nav-links{display:none;}
+  .stats-strip{grid-template-columns:1fr 1fr;}
+  .about-grid,.ai-grid{grid-template-columns:1fr;}
+  .skills-grid{grid-template-columns:1fr 1fr;}
+  .exp-item{grid-template-columns:1fr;gap:8px;padding-left:36px;}
+}
+@media(max-width:560px){
+  .skills-grid{grid-template-columns:1fr;}
+  .stats-strip{grid-template-columns:1fr 1fr;}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important;}
+}
+</style>
+</head>
+<body>
+
+<div id="cur"></div>
+<div id="cur-ring"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">OS</a>
+  <div class="nav-links">
+    <a href="#reel">Work</a>
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#ai">AI Tools</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="mailto:onkarsagvekar1993@gmail.com" class="nav-cta">Hire Me</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-noise"></div>
+  <div class="hero-pill"><span class="hero-pill-dot"></span>Available for new projects</div>
+  <h1 class="hero-h1">MOTION<br>THAT<br><span class="green">MOVES.</span></h1>
+  <p class="hero-sub">6+ years of brand content, campaign videos, and AI-powered production — across FMCG, finance, media, real estate, and EdTech. Based in Mumbai.</p>
+  <div class="hero-actions">
+    <a href="#reel" class="btn-green">See My Work</a>
+    <a href="#contact" class="btn-ghost">Get in Touch</a>
+  </div>
+  <div class="hero-scroll-hint"><span class="scroll-line"></span>Scroll to explore</div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stat-item"><div class="stat-num">6+</div><div class="stat-label">Years Experience</div></div>
+  <div class="stat-item"><div class="stat-num">11+</div><div class="stat-label">Major Brands</div></div>
+  <div class="stat-item"><div class="stat-num">100+</div><div class="stat-label">Projects Delivered</div></div>
+  <div class="stat-item"><div class="stat-num">5+</div><div class="stat-label">Industries Covered</div></div>
+</div>
+
+<!-- VIDEO REEL -->
+<section id="reel">
+  <div class="reel-header reveal">
+    <div>
+      <div class="sec-eyebrow">Selected Work</div>
+      <div class="sec-title" style="margin-bottom:0">Client <span class="green">Reel</span></div>
+    </div>
+    <div class="reel-note">Hover to pause · Click to open · Replace placeholders with your actual video files</div>
+  </div>
+
+  <!-- ROW 1 -->
+  <div class="reel-track-outer" style="margin-bottom:20px;">
+    <div class="reel-track" id="row1">
+
+      <div class="video-card" title="Add your video: replace src attribute">
+        <div class="video-placeholder">
+          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vp-client">Dabur</div>
+          <div class="vp-label">Training Video</div>
+        </div>
+        <div class="video-card-tag">FMCG</div>
+      </div>
+
+      <div class="video-card" title="Add your video: replace src attribute">
+        <div class="video-placeholder">
+          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vp-client">HUL</div>
+          <div class="vp-label">Brand Campaign</div>
+        </div>
+        <div class="video-card-tag">FMCG</div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-placeholder">
+          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vp-client">Candid Powder</div>
+          <div class="vp-label">Product Ad</div>
+        </div>
+        <div class="video-card-tag">FMCG</div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-placeholder">
+          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vp-client">Brut India</div>
+          <div class="vp-label">Title Sequence</div>
+        </div>
+        <div class="video-card-tag">MEDIA</div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-placeholder">
+          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vp-client">Godrej Properties</div>
+          <div class="vp-label">Festival Reel</div>
+        </div>
+        <div class="video-card-tag">REAL ESTATE</div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-placeholder">
+          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vp-client">Axis Mutual Fund</div>
+          <div class="vp-label">Finance Content</div>
+        </div>
+        <div class="video-card-tag">FINANCE</div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-placeholder">
+          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vp-client">Hyundai</div>
+          <div class="vp-label">Brand Animation</div>
+        </div>
+        <div class="video-card-tag">AUTO</div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-placeholder">
+          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vp-client">Chandak Group</div>
+          <div class="vp-label">Property Launch</div>
+        </div>
+        <div class="video-card-tag">REAL ESTATE</div>
+      </div>
+
+      <!-- DUPLICATE FOR LOOP -->
+      <div class="video-card">
+        <div class="video-placeholder">
+          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vp-client">Dabur</div>
+          <div class="vp-label">Training Video</div>
+        </div>
+        <div class="video-card-tag">FMCG</div>
+      </div>
+      <div class="video-card">
+        <div class="video-placeholder">
+          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vp-client">HUL</div>
+          <div class="vp-label">Brand Campaign</div>
+        </div>
+        <div class="video-card-tag">FMCG</div>
+      </div>
+      <div class="video-card">
+        <div class="video-placeholder">
+          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vp-client">Candid Powder</div>
+          <div class="vp-label">Product Ad</div>
+        </div>
+        <div class="video-card-tag">FMCG</div>
+      </div>
+      <div class="video-card">
+        <div class="video-placeholder">
+          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vp-client">Brut India</div>
+          <div class="vp-label">Title Sequence</div>
+        </div>
+        <div class="video-card-tag">MEDIA</div>
+      </div>
+      <div class="video-card">
+        <div class="video-placeholder">
+          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vp-client">Godrej Properties</div>
+          <div class="vp-label">Festival Reel</div>
+        </div>
+        <div class="video-card-tag">REAL ESTATE</div>
+      </div>
+      <div class="video-card">
+        <div class="video-placeholder">
+          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vp-client">Axis Mutual Fund</div>
+          <div class="vp-label">Finance Content</div>
+        </div>
+        <div class="video-card-tag">FINANCE</div>
+      </div>
+      <div class="video-card">
+        <div class="video-placeholder">
+          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vp-client">Hyundai</div>
+          <div class="vp-label">Brand Animation</div>
+        </div>
+        <div class="video-card-tag">AUTO</div>
+      </div>
+      <div class="video-card">
+        <div class="video-placeholder">
+          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vp-client">Chandak Group</div>
+          <div class="vp-label">Property Launch</div>
+        </div>
+        <div class="video-card-tag">REAL ESTATE</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 2 — reverse scroll -->
+  <div class="reel-track-outer">
+    <div class="reel-track reverse" id="row2">
+      <div class="video-card">
+        <div class="video-placeholder">
+          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vp-client">Ultratech Cement</div>
+          <div class="vp-label">Brand Collab</div>
+        </div>
+        <div class="video-card-tag">BRAND</div>
+      </div>
+      <div class="video-card">
+        <div class="video-placeholder">
+          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vp-client">Motilal Oswal</div>
+          <div class="vp-label">Podcast Video</div>
+        </div>
+        <div class="video-card-tag">FINANCE</div>
+      </div>
+      <div class="video-card">
+        <div class="video-placeholder">
+          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vp-client">Aditya Birla</div>
+          <div class="vp-label">Motion Animation</div>
+        </div>
+        <div class="video-card-tag">BRAND</div>
+      </div>
+      <div class="video-card">
+        <div class="video-placeholder">
+          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vp-client">Letstute</div>
+          <div class="vp-label">Explainer Video</div>
+        </div>
+        <div class="video-card-tag">EDTECH</div>
+      </div>
+      <div class="video-card">
+        <div class="video-placeholder">
+          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vp-client">AI Generated</div>
+          <div class="vp-label">RunwayML · Kling</div>
+        </div>
+        <div class="video-card-tag">AI WORK</div>
+      </div>
+      <div class="video-card">
+        <div class="video-placeholder">
+          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vp-client">Social Reels</div>
+          <div class="vp-label">Instagram · YouTube</div>
+        </div>
+        <div class="video-card-tag">SOCIAL</div>
+      </div>
+      <div class="video-card">
+        <div class="video-placeholder">
+          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vp-client">Character Anim.</div>
+          <div class="vp-label">EdTech Course</div>
+        </div>
+        <div class="video-card-tag">ANIMATION</div>
+      </div>
+      <div class="video-card">
+        <div class="video-placeholder">
+          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vp-client">Add Your Video</div>
+          <div class="vp-label">Your Best Work</div>
+        </div>
+        <div class="video-card-tag">YOUR WORK</div>
+      </div>
+      <!-- DUPLICATE -->
+      <div class="video-card">
+        <div class="video-placeholder">
+          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vp-client">Ultratech Cement</div>
+          <div class="vp-label">Brand Collab</div>
+        </div>
+        <div class="video-card-tag">BRAND</div>
+      </div>
+      <div class="video-card">
+        <div class="video-placeholder">
+          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vp-client">Motilal Oswal</div>
+          <div class="vp-label">Podcast Video</div>
+        </div>
+        <div class="video-card-tag">FINANCE</div>
+      </div>
+      <div class="video-card">
+        <div class="video-placeholder">
+          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vp-client">Aditya Birla</div>
+          <div class="vp-label">Motion Animation</div>
+        </div>
+        <div class="video-card-tag">BRAND</div>
+      </div>
+      <div class="video-card">
+        <div class="video-placeholder">
+          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vp-client">Letstute</div>
+          <div class="vp-label">Explainer Video</div>
+        </div>
+        <div class="video-card-tag">EDTECH</div>
+      </div>
+      <div class="video-card">
+        <div class="video-placeholder">
+          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vp-client">AI Generated</div>
+          <div class="vp-label">RunwayML · Kling</div>
+        </div>
+        <div class="video-card-tag">AI WORK</div>
+      </div>
+      <div class="video-card">
+        <div class="video-placeholder">
+          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vp-client">Social Reels</div>
+          <div class="vp-label">Instagram · YouTube</div>
+        </div>
+        <div class="video-card-tag">SOCIAL</div>
+      </div>
+      <div class="video-card">
+        <div class="video-placeholder">
+          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vp-client">Character Anim.</div>
+          <div class="vp-label">EdTech Course</div>
+        </div>
+        <div class="video-card-tag">ANIMATION</div>
+      </div>
+      <div class="video-card">
+        <div class="video-placeholder">
+          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="vp-client">Add Your Video</div>
+          <div class="vp-label">Your Best Work</div>
+        </div>
+        <div class="video-card-tag">YOUR WORK</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW TO ADD VIDEO -->
+  <div class="reel-instruction reveal">
+    <div class="ri-icon">🎬</div>
+    <div class="ri-text">
+      <strong>To add your actual videos:</strong> Find any <code style="color:var(--green);background:rgba(184,255,0,.08);padding:1px 6px;border-radius:2px;">&lt;div class="video-placeholder"&gt;</code> block and replace it with <code style="color:var(--green);background:rgba(184,255,0,.08);padding:1px 6px;border-radius:2px;">&lt;video autoplay muted loop playsinline src="your-video.mp4"&gt;&lt;/video&gt;</code> — keep the card tag label above it.
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="sec">
+  <div class="sec-eyebrow">About</div>
+  <h2 class="sec-title">The person behind<br>the <span class="green">pixels</span></h2>
+  <div class="about-grid">
+    <div class="about-body reveal">
+      <p>I'm a <strong>Senior Motion Graphics Designer</strong> based in Mumbai with 6+ years of experience creating video content that works — across industries, audiences, and platforms.</p>
+      <p>I've worked with India's most recognizable brands — <strong>Dabur, HUL, Godrej, Brut India, Candid Powder, Axis Mutual Fund</strong> and more. I understand what each brand needs and deliver it without missing deadlines.</p>
+      <p>Right now I'm <strong>leading a team of 2 designers</strong> at First Economy while staying hands-on with production. I'm also one of the earlier adopters of AI tools in creative workflows — actively using <strong>RunwayML, Magnific, Higgsfield, Kling, Veo</strong> in real client work.</p>
+      <div class="about-pull">
+        <p>"Good motion design isn't about how complex the animation is — it's about whether it makes someone stop scrolling."</p>
+      </div>
+    </div>
+    <div class="about-cards reveal">
+      <div class="about-card"><div class="ac-label">Location</div><div class="ac-value">Ghatkopar (W), Mumbai – 400084</div></div>
+      <div class="about-card"><div class="ac-label">Education</div><div class="ac-value">BA Mass Media (Advertising)<br>Guru Nanak Khalsa College, 2019</div></div>
+      <div class="about-card"><div class="ac-label">Current Role</div><div class="ac-value">Sr. Motion Graphics Designer<br>First Economy · Feb 2025 – Present</div></div>
+      <div class="about-card"><div class="ac-label">Core Software</div><div class="ac-value">After Effects · Premiere Pro · Photoshop · Illustrator · Adobe CC</div></div>
+      <div class="about-card"><div class="ac-label">Contact</div><div class="ac-value">onkarsagvekar1993@gmail.com<br>+91 99679 27851</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="sec">
+  <div class="sec-eyebrow">Career</div>
+  <h2 class="sec-title">Where I've <span class="green">worked</span></h2>
+  <div class="exp-list">
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-co">First Economy</div>
+        <div class="exp-dates">Feb 2025 – Present</div>
+      </div>
+      <div>
+        <div class="exp-role">Sr. Motion Graphics Designer</div>
+        <ul class="exp-bullets">
+          <li>Leading a team of 2 junior designers — assigning tasks, reviewing output, and providing creative direction across active campaigns.</li>
+          <li>Creating campaign video content for Godrej Properties, Candid Powder, Chandak Group, and other clients across real estate, FMCG, finance, and lifestyle verticals.</li>
+          <li>Integrated AI tools — ChatGPT, Kling, Veo, Seedance, RunwayML, Nano Banana — into production workflows, significantly cutting ideation time.</li>
+          <li>Actively using paid AI platforms: RunwayML, Magnific, and Higgsfield for visual enhancement and AI video generation in client deliverables.</li>
+          <li>Delivering 20–30 finalized assets per month across multiple formats for Instagram, YouTube, Digital OOH, and presentations.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-co">Brut India</div>
+        <div class="exp-dates">Jan 2024 – Feb 2025</div>
+      </div>
+      <div>
+        <div class="exp-role">Motion Graphics Designer</div>
+        <ul class="exp-bullets">
+          <li>Produced animated show title sequences, video montages, and branded content for a 50M+ follower platform.</li>
+          <li>Created brand animations for Ultratech Cement, Aditya Birla Group, and Hyundai — maintaining strict Brut visual identity.</li>
+          <li>Managed rapid content turnarounds (24–48 hour delivery) consistently without compromising motion quality.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-co">Letstute</div>
+        <div class="exp-dates">Jan 2020 – Sep 2023</div>
+      </div>
+      <div>
+        <div class="exp-role">Motion Graphics Designer</div>
+        <ul class="exp-bullets">
+          <li>Developed 100+ end-to-end e-learning modules with explainer animation, character animation, and kinetic typography.</li>
+          <li>Produced corporate training videos for Dabur and HUL sales teams.</li>
+          <li>Created financial education content for Axis Mutual Fund and Motilal Oswal.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-co">Transasia</div>
+        <div class="exp-dates">Aug–Nov 2019</div>
+      </div>
+      <div>
+        <div class="exp-role">Graphic Design Intern</div>
+        <ul class="exp-bullets">
+          <li>Designed social media graphics and event creatives for a blood donation CSR campaign.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="sec">
+  <div class="sec-eyebrow">Skills</div>
+  <h2 class="sec-title">What I <span class="green">bring</span></h2>
+  <div class="skills-grid">
+    <div class="skill-card"><div class="sk-title">Motion & Animation</div><div class="sk-tags"><span class="sk-tag">Motion Graphics</span><span class="sk-tag">Character Animation</span><span class="sk-tag">Kinetic Typography</span><span class="sk-tag">AE Expressions</span><span class="sk-tag">Title Sequences</span></div></div>
+    <div class="skill-card"><div class="sk-title">Video Production</div><div class="sk-tags"><span class="sk-tag">Video Editing</span><span class="sk-tag">Color Grading</span><span class="sk-tag">Multi-Format Delivery</span><span class="sk-tag">Aspect Ratios</span><span class="sk-tag">Post Production</span></div></div>
+    <div class="skill-card"><div class="sk-title">Brand & Creative</div><div class="sk-tags"><span class="sk-tag">Brand Guidelines</span><span class="sk-tag">Visual Identity</span><span class="sk-tag">Social Creatives</span><span class="sk-tag">Campaign Assets</span><span class="sk-tag">Storyboarding</span></div></div>
+    <div class="skill-card"><div class="sk-title">Adobe CC</div><div class="sk-tags"><span class="sk-tag">After Effects</span><span class="sk-tag">Premiere Pro</span><span class="sk-tag">Photoshop</span><span class="sk-tag">Illustrator</span><span class="sk-tag">Adobe CC</span></div></div>
+    <div class="skill-card"><div class="sk-title">Content Formats</div><div class="sk-tags"><span class="sk-tag">Instagram Reels</span><span class="sk-tag">YouTube</span><span class="sk-tag">Digital OOH</span><span class="sk-tag">Brand Films</span><span class="sk-tag">Explainer Videos</span><span class="sk-tag">Training Videos</span></div></div>
+    <div class="skill-card"><div class="sk-title">Leadership</div><div class="sk-tags"><span class="sk-tag">Team Lead (2 Members)</span><span class="sk-tag">Brief Management</span><span class="sk-tag">Multi-Project</span><span class="sk-tag">Client Comms</span><span class="sk-tag">Fast Turnaround</span></div></div>
+  </div>
+</section>
+
+<!-- AI -->
+<section id="ai" class="sec">
+  <div class="sec-eyebrow">AI-Powered Production</div>
+  <h2 class="sec-title">AI Tools I <span class="green">actually</span> use</h2>
+  <p style="color:var(--body);font-size:14px;max-width:500px;line-height:1.7;margin-bottom:52px;">Not experimenting — these are live in real client workflows. AI helps me produce more, faster, without losing the human eye for quality.</p>
+  <div class="ai-grid">
+    <div>
+      <div class="ai-col-head">Production AI Tools</div>
+      <div class="ai-item"><div class="ai-dot"></div><div><div class="ai-name">ChatGPT</div><div class="ai-desc">Scripting, brief analysis, ideation, caption writing</div></div></div>
+      <div class="ai-item"><div class="ai-dot"></div><div><div class="ai-name">Kling AI</div><div class="ai-desc">AI video generation for social campaigns</div></div></div>
+      <div class="ai-item"><div class="ai-dot"></div><div><div class="ai-name">Veo</div><div class="ai-desc">AI video synthesis and scene creation</div></div></div>
+      <div class="ai-item"><div class="ai-dot"></div><div><div class="ai-name">Seedance</div><div class="ai-desc">AI-assisted motion and animation generation</div></div></div>
+      <div class="ai-item"><div class="ai-dot"></div><div><div class="ai-name">Nano Banana</div><div class="ai-desc">AI creative content and image generation</div></div></div>
+    </div>
+    <div>
+      <div class="ai-col-head">Paid Platforms — Hands On <span class="paid-badge">Active</span></div>
+      <div class="ai-item"><div class="ai-dot"></div><div><div class="ai-name">RunwayML</div><div class="ai-desc">AI video generation and editing — used in client deliverables</div></div></div>
+      <div class="ai-item"><div class="ai-dot"></div><div><div class="ai-name">Magnific</div><div class="ai-desc">AI image upscaling and visual enhancement</div></div></div>
+      <div class="ai-item"><div class="ai-dot"></div><div><div class="ai-name">Higgsfield</div><div class="ai-desc">AI cinematic video generation for premium content</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section id="brands">
+  <div class="brands-header reveal">
+    <div class="sec-eyebrow">Clients & Brands</div>
+    <h2 class="sec-title">Who I've worked <span class="green">with</span></h2>
+  </div>
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span class="brand-item">Dabur</span>
+      <span class="brand-item">Hindustan Unilever</span>
+      <span class="brand-item">Candid Powder</span>
+      <span class="brand-item">Godrej Properties</span>
+      <span class="brand-item">Chandak Group</span>
+      <span class="brand-item">Brut India</span>
+      <span class="brand-item">Axis Mutual Fund</span>
+      <span class="brand-item">Motilal Oswal</span>
+      <span class="brand-item">Ultratech Cement</span>
+      <span class="brand-item">Aditya Birla Group</span>
+      <span class="brand-item">Hyundai</span>
+      <span class="brand-item">Dabur</span>
+      <span class="brand-item">Hindustan Unilever</span>
+      <span class="brand-item">Candid Powder</span>
+      <span class="brand-item">Godrej Properties</span>
+      <span class="brand-item">Chandak Group</span>
+      <span class="brand-item">Brut India</span>
+      <span class="brand-item">Axis Mutual Fund</span>
+      <span class="brand-item">Motilal Oswal</span>
+      <span class="brand-item">Ultratech Cement</span>
+      <span class="brand-item">Aditya Birla Group</span>
+      <span class="brand-item">Hyundai</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="sec">
+  <div class="contact-inner">
+    <div class="sec-eyebrow" style="text-align:center">Let's work together</div>
+    <h2 class="sec-title" style="text-align:center">Got a brief?<br><span class="green">Let's talk.</span></h2>
+    <p class="contact-sub">Open to full-time roles, freelance projects, and collaborations. If you need a motion designer who delivers quality fast — I'm your person.</p>
+    <div class="contact-links">
+      <a href="mailto:onkarsagvekar1993@gmail.com" class="c-link"><span class="ico">✉</span>Email Me</a>
+      <a href="https://linkedin.com/in/onkar-sagvekar" target="_blank" class="c-link"><span class="ico">in</span>LinkedIn</a>
+      <a href="https://behance.net/onkarsagvekar2" target="_blank" class="c-link"><span class="ico">Bē</span>Behance</a>
+    </div>
+    <p class="contact-small">Mumbai · +91 99679 27851</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">ONKAR SAGVEKAR</div>
+  <div class="footer-copy">© 2025 · Senior Motion Graphics Designer · Mumbai</div>
+</footer>
+
+<script>
+// Cursor
+const cur = document.getElementById('cur');
+const ring = document.getElementById('cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function tick(){
+  cur.style.left=mx+'px';cur.style.top=my+'px';
+  rx+=(mx-rx)*.1;ry+=(my-ry)*.1;
+  ring.style.left=rx+'px';ring.style.top=ry+'px';
+  requestAnimationFrame(tick);
+})();
+
+// Scroll reveal
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:.1});
+document.querySelectorAll('.reveal,.exp-item,.skill-card').forEach(el=>io.observe(el));
+
+// Stagger skill cards
+document.querySelectorAll('.skill-card').forEach((c,i)=>{
+  c.style.transitionDelay=(i*0.07)+'s';
+});
+
+// Video autoplay on hover-pause
+document.querySelectorAll('.video-card video').forEach(v=>{
+  v.play().catch(()=>{});
+});
+</script>
+</body>
+</html>
