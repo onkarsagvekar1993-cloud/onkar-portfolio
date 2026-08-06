@@ -183,9 +183,14 @@ nav{
   transition:border-color .3s,transform .3s;
 }
 .video-card:hover{border-color:var(--green);transform:scale(1.02);}
-.video-card video{
-  width:100%;height:100%;object-fit:cover;
-  display:block;
+.video-card iframe{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:none;
+  pointer-events:none;
+  transform:scale(1.12);
 }
 /* placeholder state when no video src */
 .video-placeholder{
@@ -463,143 +468,189 @@ footer{
   <div class="reel-track-outer" style="margin-bottom:20px;">
     <div class="reel-track" id="row1">
 
- <div class="video-card">
-  <iframe 
-    src="https://www.youtube.com/embed/mjp0zGZZqYY?autoplay=1&mute=1&loop=1&playlist=mjp0zGZZqYY&controls=0&showinfo=0&rel=0" 
-    frameborder="0" 
-    allow="autoplay; encrypted-media" 
+      <div class="video-card" title="Add your video: replace src attribute">
+        <iframe
+    src="https://www.youtube.com/embed/12w-e2_9UQA?autoplay=1&mute=1&loop=1&playlist=12w-e2_9UQA&controls=0&rel=0&modestbranding=1&playsinline=1"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
     allowfullscreen
-    style="width:100%;height:100%;object-fit:cover;border:none;">
+    loading="lazy"
+    style="width:100%;height:100%;border:none;pointer-events:none;">
   </iframe>
-  <div class="video-card-tag">FMCG</div>
-</div>
+        <div class="video-card-tag">FMCG</div>
+      </div>
 
       <div class="video-card" title="Add your video: replace src attribute">
-        <div class="video-placeholder">
-          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="vp-client">HUL</div>
-          <div class="vp-label">Brand Campaign</div>
-        </div>
+        <iframe
+    src="https://www.youtube.com/embed/afhwXOfOPZA?autoplay=1&mute=1&loop=1&playlist=afhwXOfOPZA&controls=0&rel=0&modestbranding=1&playsinline=1"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+    loading="lazy"
+    style="width:100%;height:100%;border:none;pointer-events:none;">
+  </iframe>
         <div class="video-card-tag">FMCG</div>
       </div>
 
       <div class="video-card">
-        <div class="video-placeholder">
-          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="vp-client">Candid Powder</div>
-          <div class="vp-label">Product Ad</div>
-        </div>
+        <iframe
+    src="https://www.youtube.com/embed/3_kXbVsX2BU?autoplay=1&mute=1&loop=1&playlist=3_kXbVsX2BU&controls=0&rel=0&modestbranding=1&playsinline=1"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+    loading="lazy"
+    style="width:100%;height:100%;border:none;pointer-events:none;">
+  </iframe>
         <div class="video-card-tag">FMCG</div>
       </div>
 
       <div class="video-card">
-        <div class="video-placeholder">
-          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="vp-client">Brut India</div>
-          <div class="vp-label">Title Sequence</div>
-        </div>
+        <iframe
+    src="https://www.youtube.com/embed/mjp0zGZZqYY?autoplay=1&mute=1&loop=1&playlist=mjp0zGZZqYY&controls=0&rel=0&modestbranding=1&playsinline=1"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+    loading="lazy"
+    style="width:100%;height:100%;border:none;pointer-events:none;">
+  </iframe>
         <div class="video-card-tag">MEDIA</div>
       </div>
 
       <div class="video-card">
-        <div class="video-placeholder">
-          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="vp-client">Godrej Properties</div>
-          <div class="vp-label">Festival Reel</div>
-        </div>
+        <iframe
+    src="https://www.youtube.com/embed/f7uSuyd98h0?autoplay=1&mute=1&loop=1&playlist=f7uSuyd98h0&controls=0&rel=0&modestbranding=1&playsinline=1"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+    loading="lazy"
+    style="width:100%;height:100%;border:none;pointer-events:none;">
+  </iframe>
         <div class="video-card-tag">REAL ESTATE</div>
       </div>
 
       <div class="video-card">
-        <div class="video-placeholder">
-          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="vp-client">Axis Mutual Fund</div>
-          <div class="vp-label">Finance Content</div>
-        </div>
+        <iframe
+    src="https://www.youtube.com/embed/lljHHk-FZ2o?autoplay=1&mute=1&loop=1&playlist=lljHHk-FZ2o&controls=0&rel=0&modestbranding=1&playsinline=1"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+    loading="lazy"
+    style="width:100%;height:100%;border:none;pointer-events:none;">
+  </iframe>
         <div class="video-card-tag">FINANCE</div>
       </div>
 
       <div class="video-card">
-        <div class="video-placeholder">
-          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="vp-client">Hyundai</div>
-          <div class="vp-label">Brand Animation</div>
-        </div>
+        <iframe
+    src="https://www.youtube.com/embed/X-BhtPBvCWY?autoplay=1&mute=1&loop=1&playlist=X-BhtPBvCWY&controls=0&rel=0&modestbranding=1&playsinline=1"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+    loading="lazy"
+    style="width:100%;height:100%;border:none;pointer-events:none;">
+  </iframe>
         <div class="video-card-tag">AUTO</div>
       </div>
 
       <div class="video-card">
-        <div class="video-placeholder">
-          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="vp-client">Chandak Group</div>
-          <div class="vp-label">Property Launch</div>
-        </div>
+        <iframe
+    src="https://www.youtube.com/embed/QlVMhVPdP3E?autoplay=1&mute=1&loop=1&playlist=QlVMhVPdP3E&controls=0&rel=0&modestbranding=1&playsinline=1"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+    loading="lazy"
+    style="width:100%;height:100%;border:none;pointer-events:none;">
+  </iframe>
         <div class="video-card-tag">REAL ESTATE</div>
       </div>
 
       <!-- DUPLICATE FOR LOOP -->
       <div class="video-card">
-        <div class="video-placeholder">
-          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="vp-client">Dabur</div>
-          <div class="vp-label">Training Video</div>
-        </div>
+        <iframe
+    src="https://www.youtube.com/embed/KM4tgNwop2c?autoplay=1&mute=1&loop=1&playlist=KM4tgNwop2c&controls=0&rel=0&modestbranding=1&playsinline=1"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+    loading="lazy"
+    style="width:100%;height:100%;border:none;pointer-events:none;">
+  </iframe>
         <div class="video-card-tag">FMCG</div>
       </div>
       <div class="video-card">
-        <div class="video-placeholder">
-          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="vp-client">HUL</div>
-          <div class="vp-label">Brand Campaign</div>
-        </div>
+        <iframe
+    src="https://www.youtube.com/embed/JG4Q6hSoppc?autoplay=1&mute=1&loop=1&playlist=JG4Q6hSoppc&controls=0&rel=0&modestbranding=1&playsinline=1"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+    loading="lazy"
+    style="width:100%;height:100%;border:none;pointer-events:none;">
+  </iframe>
         <div class="video-card-tag">FMCG</div>
       </div>
       <div class="video-card">
-        <div class="video-placeholder">
-          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="vp-client">Candid Powder</div>
-          <div class="vp-label">Product Ad</div>
-        </div>
+        <iframe
+    src="https://www.youtube.com/embed/sIc4vm7cavQ?autoplay=1&mute=1&loop=1&playlist=sIc4vm7cavQ&controls=0&rel=0&modestbranding=1&playsinline=1"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+    loading="lazy"
+    style="width:100%;height:100%;border:none;pointer-events:none;">
+  </iframe>
         <div class="video-card-tag">FMCG</div>
       </div>
       <div class="video-card">
-        <div class="video-placeholder">
-          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="vp-client">Brut India</div>
-          <div class="vp-label">Title Sequence</div>
-        </div>
+        <iframe
+    src="https://www.youtube.com/embed/wOdWwk5Tejw?autoplay=1&mute=1&loop=1&playlist=wOdWwk5Tejw&controls=0&rel=0&modestbranding=1&playsinline=1"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+    loading="lazy"
+    style="width:100%;height:100%;border:none;pointer-events:none;">
+  </iframe>
         <div class="video-card-tag">MEDIA</div>
       </div>
       <div class="video-card">
-        <div class="video-placeholder">
-          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="vp-client">Godrej Properties</div>
-          <div class="vp-label">Festival Reel</div>
-        </div>
+        <iframe
+    src="https://www.youtube.com/embed/WSElq_xg6Mo?autoplay=1&mute=1&loop=1&playlist=WSElq_xg6Mo&controls=0&rel=0&modestbranding=1&playsinline=1"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+    loading="lazy"
+    style="width:100%;height:100%;border:none;pointer-events:none;">
+  </iframe>
         <div class="video-card-tag">REAL ESTATE</div>
       </div>
       <div class="video-card">
-        <div class="video-placeholder">
-          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="vp-client">Axis Mutual Fund</div>
-          <div class="vp-label">Finance Content</div>
-        </div>
+        <iframe
+    src="https://www.youtube.com/embed/g-8H3_ufNyg?autoplay=1&mute=1&loop=1&playlist=g-8H3_ufNyg&controls=0&rel=0&modestbranding=1&playsinline=1"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+    loading="lazy"
+    style="width:100%;height:100%;border:none;pointer-events:none;">
+  </iframe>
         <div class="video-card-tag">FINANCE</div>
       </div>
       <div class="video-card">
-        <div class="video-placeholder">
-          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="vp-client">Hyundai</div>
-          <div class="vp-label">Brand Animation</div>
-        </div>
+        <iframe
+    src="https://www.youtube.com/embed/nBiDaxHXJw8?autoplay=1&mute=1&loop=1&playlist=nBiDaxHXJw8&controls=0&rel=0&modestbranding=1&playsinline=1"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+    loading="lazy"
+    style="width:100%;height:100%;border:none;pointer-events:none;">
+  </iframe>
         <div class="video-card-tag">AUTO</div>
       </div>
       <div class="video-card">
-        <div class="video-placeholder">
-          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="vp-client">Chandak Group</div>
-          <div class="vp-label">Property Launch</div>
-        </div>
+        <iframe
+    src="https://www.youtube.com/embed/6kRMXrwtYkI?autoplay=1&mute=1&loop=1&playlist=6kRMXrwtYkI&controls=0&rel=0&modestbranding=1&playsinline=1"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+    loading="lazy"
+    style="width:100%;height:100%;border:none;pointer-events:none;">
+  </iframe>
         <div class="video-card-tag">REAL ESTATE</div>
       </div>
     </div>
@@ -609,132 +660,180 @@ footer{
   <div class="reel-track-outer">
     <div class="reel-track reverse" id="row2">
       <div class="video-card">
-        <div class="video-placeholder">
-          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="vp-client">Ultratech Cement</div>
-          <div class="vp-label">Brand Collab</div>
-        </div>
+        <iframe
+    src="https://www.youtube.com/embed/73UEW_V6M6o?autoplay=1&mute=1&loop=1&playlist=73UEW_V6M6o&controls=0&rel=0&modestbranding=1&playsinline=1"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+    loading="lazy"
+    style="width:100%;height:100%;border:none;pointer-events:none;">
+  </iframe>
         <div class="video-card-tag">BRAND</div>
       </div>
       <div class="video-card">
-        <div class="video-placeholder">
-          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="vp-client">Motilal Oswal</div>
-          <div class="vp-label">Podcast Video</div>
-        </div>
+        <iframe
+    src="https://www.youtube.com/embed/Z5j9YxCfVHc?autoplay=1&mute=1&loop=1&playlist=Z5j9YxCfVHc&controls=0&rel=0&modestbranding=1&playsinline=1"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+    loading="lazy"
+    style="width:100%;height:100%;border:none;pointer-events:none;">
+  </iframe>
         <div class="video-card-tag">FINANCE</div>
       </div>
       <div class="video-card">
-        <div class="video-placeholder">
-          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="vp-client">Aditya Birla</div>
-          <div class="vp-label">Motion Animation</div>
-        </div>
+        <iframe
+    src="https://www.youtube.com/embed/Vhu39QHiyd4?autoplay=1&mute=1&loop=1&playlist=Vhu39QHiyd4&controls=0&rel=0&modestbranding=1&playsinline=1"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+    loading="lazy"
+    style="width:100%;height:100%;border:none;pointer-events:none;">
+  </iframe>
         <div class="video-card-tag">BRAND</div>
       </div>
       <div class="video-card">
-        <div class="video-placeholder">
-          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="vp-client">Letstute</div>
-          <div class="vp-label">Explainer Video</div>
-        </div>
+        <iframe
+    src="https://www.youtube.com/embed/khiL30h8tOA?autoplay=1&mute=1&loop=1&playlist=khiL30h8tOA&controls=0&rel=0&modestbranding=1&playsinline=1"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+    loading="lazy"
+    style="width:100%;height:100%;border:none;pointer-events:none;">
+  </iframe>
         <div class="video-card-tag">EDTECH</div>
       </div>
       <div class="video-card">
-        <div class="video-placeholder">
-          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="vp-client">AI Generated</div>
-          <div class="vp-label">RunwayML · Kling</div>
-        </div>
+        <iframe
+    src="https://www.youtube.com/embed/C2zN_wUca4g?autoplay=1&mute=1&loop=1&playlist=C2zN_wUca4g&controls=0&rel=0&modestbranding=1&playsinline=1"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+    loading="lazy"
+    style="width:100%;height:100%;border:none;pointer-events:none;">
+  </iframe>
         <div class="video-card-tag">AI WORK</div>
       </div>
       <div class="video-card">
-        <div class="video-placeholder">
-          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="vp-client">Social Reels</div>
-          <div class="vp-label">Instagram · YouTube</div>
-        </div>
+        <iframe
+    src="https://www.youtube.com/embed/HNCztdMpf8s?autoplay=1&mute=1&loop=1&playlist=HNCztdMpf8s&controls=0&rel=0&modestbranding=1&playsinline=1"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+    loading="lazy"
+    style="width:100%;height:100%;border:none;pointer-events:none;">
+  </iframe>
         <div class="video-card-tag">SOCIAL</div>
       </div>
       <div class="video-card">
-        <div class="video-placeholder">
-          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="vp-client">Character Anim.</div>
-          <div class="vp-label">EdTech Course</div>
-        </div>
+        <iframe
+    src="https://www.youtube.com/embed/wVaOaLsVuPw?autoplay=1&mute=1&loop=1&playlist=wVaOaLsVuPw&controls=0&rel=0&modestbranding=1&playsinline=1"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+    loading="lazy"
+    style="width:100%;height:100%;border:none;pointer-events:none;">
+  </iframe>
         <div class="video-card-tag">ANIMATION</div>
       </div>
       <div class="video-card">
-        <div class="video-placeholder">
-          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="vp-client">Add Your Video</div>
-          <div class="vp-label">Your Best Work</div>
-        </div>
+        <iframe
+    src="https://www.youtube.com/embed/KUIZJFoaIaA?autoplay=1&mute=1&loop=1&playlist=KUIZJFoaIaA&controls=0&rel=0&modestbranding=1&playsinline=1"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+    loading="lazy"
+    style="width:100%;height:100%;border:none;pointer-events:none;">
+  </iframe>
         <div class="video-card-tag">YOUR WORK</div>
       </div>
       <!-- DUPLICATE -->
       <div class="video-card">
-        <div class="video-placeholder">
-          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="vp-client">Ultratech Cement</div>
-          <div class="vp-label">Brand Collab</div>
-        </div>
+        <iframe
+    src="https://www.youtube.com/embed/bVgpJjzmJVo?autoplay=1&mute=1&loop=1&playlist=bVgpJjzmJVo&controls=0&rel=0&modestbranding=1&playsinline=1"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+    loading="lazy"
+    style="width:100%;height:100%;border:none;pointer-events:none;">
+  </iframe>
         <div class="video-card-tag">BRAND</div>
       </div>
       <div class="video-card">
-        <div class="video-placeholder">
-          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="vp-client">Motilal Oswal</div>
-          <div class="vp-label">Podcast Video</div>
-        </div>
+        <iframe
+    src="https://www.youtube.com/embed/HKlX5-UQNMs?autoplay=1&mute=1&loop=1&playlist=HKlX5-UQNMs&controls=0&rel=0&modestbranding=1&playsinline=1"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+    loading="lazy"
+    style="width:100%;height:100%;border:none;pointer-events:none;">
+  </iframe>
         <div class="video-card-tag">FINANCE</div>
       </div>
       <div class="video-card">
-        <div class="video-placeholder">
-          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="vp-client">Aditya Birla</div>
-          <div class="vp-label">Motion Animation</div>
-        </div>
+        <iframe
+    src="https://www.youtube.com/embed/mRLf87Opabs?autoplay=1&mute=1&loop=1&playlist=mRLf87Opabs&controls=0&rel=0&modestbranding=1&playsinline=1"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+    loading="lazy"
+    style="width:100%;height:100%;border:none;pointer-events:none;">
+  </iframe>
         <div class="video-card-tag">BRAND</div>
       </div>
       <div class="video-card">
-        <div class="video-placeholder">
-          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="vp-client">Letstute</div>
-          <div class="vp-label">Explainer Video</div>
-        </div>
+        <iframe
+    src="https://www.youtube.com/embed/1Kd9y4wvrPI?autoplay=1&mute=1&loop=1&playlist=1Kd9y4wvrPI&controls=0&rel=0&modestbranding=1&playsinline=1"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+    loading="lazy"
+    style="width:100%;height:100%;border:none;pointer-events:none;">
+  </iframe>
         <div class="video-card-tag">EDTECH</div>
       </div>
       <div class="video-card">
-        <div class="video-placeholder">
-          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="vp-client">AI Generated</div>
-          <div class="vp-label">RunwayML · Kling</div>
-        </div>
+        <iframe
+    src="https://www.youtube.com/embed/qtGyVnUaB0M?autoplay=1&mute=1&loop=1&playlist=qtGyVnUaB0M&controls=0&rel=0&modestbranding=1&playsinline=1"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+    loading="lazy"
+    style="width:100%;height:100%;border:none;pointer-events:none;">
+  </iframe>
         <div class="video-card-tag">AI WORK</div>
       </div>
       <div class="video-card">
-        <div class="video-placeholder">
-          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="vp-client">Social Reels</div>
-          <div class="vp-label">Instagram · YouTube</div>
-        </div>
+        <iframe
+    src="https://www.youtube.com/embed/ciylhc1YFYQ?autoplay=1&mute=1&loop=1&playlist=ciylhc1YFYQ&controls=0&rel=0&modestbranding=1&playsinline=1"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+    loading="lazy"
+    style="width:100%;height:100%;border:none;pointer-events:none;">
+  </iframe>
         <div class="video-card-tag">SOCIAL</div>
       </div>
       <div class="video-card">
-        <div class="video-placeholder">
-          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="vp-client">Character Anim.</div>
-          <div class="vp-label">EdTech Course</div>
-        </div>
+        <iframe
+    src="https://www.youtube.com/embed/3JDqvXdFLX0?autoplay=1&mute=1&loop=1&playlist=3JDqvXdFLX0&controls=0&rel=0&modestbranding=1&playsinline=1"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+    loading="lazy"
+    style="width:100%;height:100%;border:none;pointer-events:none;">
+  </iframe>
         <div class="video-card-tag">ANIMATION</div>
       </div>
       <div class="video-card">
-        <div class="video-placeholder">
-          <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="vp-client">Add Your Video</div>
-          <div class="vp-label">Your Best Work</div>
-        </div>
+        <iframe
+    src="https://www.youtube.com/embed/VGFRca7AiEg?autoplay=1&mute=1&loop=1&playlist=VGFRca7AiEg&controls=0&rel=0&modestbranding=1&playsinline=1"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+    loading="lazy"
+    style="width:100%;height:100%;border:none;pointer-events:none;">
+  </iframe>
         <div class="video-card-tag">YOUR WORK</div>
       </div>
     </div>
